@@ -6,4 +6,16 @@ import { Injectable } from '@angular/core';
 export class MoviesService {
 
   constructor() { }
+
+  getRecentMovies() {
+
+  }
+
+  getOneMovie() {
+
+  }
+
+  saveMovie() {
+
+  }
 }
