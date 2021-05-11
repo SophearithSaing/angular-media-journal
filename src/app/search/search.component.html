@@ -7,18 +7,19 @@
 </nb-form-field>
 
 <div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-  <nb-card accent="primary" class="movie" *ngFor="let movie of results">
-    <nb-card-header class="movie__date">
-      {{ moviesService.formatDate(movie.release_date) }}
-    </nb-card-header>
-    <nb-card-body>
+  <div accent="primary" class="movie" *ngFor="let movie of results">
       <img *ngIf="movie.poster_path !== null" class="movie__poster" src="{{ moviesService.getImage(movie.poster_path) }}" alt="">
       <img *ngIf="movie.poster_path === null" class="movie__poster-null">
+      <div class="image-overlay">
+        <button nbButton class="image-overlay__button">Save</button>
+      </div>
       <div class="movie__info">
+        <p class="movie__date">
+          {{ moviesService.formatDate(movie.release_date) }}
+        </p>
         <p class="movie__title">
           {{ movie.title }}
         </p>
-      </div>
-    </nb-card-body>
-  </nb-card>
+    </div>
+  </div>
 </div>
