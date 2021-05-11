@@ -1,1 +1,7 @@
-<p>search works!</p>
+<nb-form-field class="search-form">
+  <input nbInput type="text" [(ngModel)]="query" name="query" placeholder="Enter title..." class="search-form__input">
+  <button nbSuffix nbButton ghost (click)="search()">
+    <nb-icon icon="search-outline" status="pimary">
+    </nb-icon>
+  </button>
+</nb-form-field>

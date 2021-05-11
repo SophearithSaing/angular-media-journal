@@ -32,7 +32,7 @@ export class MoviesService {
 
   searchMovies = (query: string) => {
     const url = `${this.apiUrl}/search/movie?api_key=${this.apiKey}&query=${query}`;
-    return this.http.get<Movie>(url);
+    return this.http.get<{results: Movie[]}>(url);
   }
 
   saveMovie = () => {
