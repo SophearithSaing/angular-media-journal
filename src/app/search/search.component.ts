@@ -11,10 +11,17 @@ export class SearchComponent implements OnInit {
 
   results: Movie[] = [];
   query = '';
+  loading = false;
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(public moviesService: MoviesService) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.moviesService.searchMovies('justice league').subscribe(res => {
+      this.results = res.results;
+      console.log(this.results);
+      this.loading = false;
+    });
   }
 
   search = () => {

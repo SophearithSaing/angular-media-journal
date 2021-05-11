@@ -35,6 +35,19 @@ export class MoviesService {
     return this.http.get<{results: Movie[]}>(url);
   }
 
+  getImage = (path: string, width = '/original') => {
+    if (width !== '/original') {
+      width = `/w${width}`;
+    }
+    return `${this.apiImageUrl}${width}${path}`;
+  }
+
+  formatDate = (date: string) => {
+    const oldDate = new Date(date);
+    const str = oldDate.toDateString().split(' ');
+    return `${str[0]}, ${str[2]} ${str[1]} ${str[3]}`;
+  }
+
   saveMovie = () => {
 
   }

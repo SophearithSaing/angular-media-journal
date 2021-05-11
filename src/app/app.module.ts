@@ -14,7 +14,9 @@ import {
   NbActionsModule,
   NbFormFieldModule,
   NbInputModule,
-  NbIconModule
+  NbIconModule,
+  NbCardModule,
+  NbSpinnerModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -48,7 +50,9 @@ import { MyMoviesComponent } from './my-movies/my-movies.component';
     NbActionsModule,
     NbFormFieldModule,
     NbInputModule,
-    NbIconModule
+    NbIconModule,
+    NbCardModule,
+    NbSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
