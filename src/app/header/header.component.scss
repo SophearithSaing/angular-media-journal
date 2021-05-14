@@ -3,6 +3,9 @@
   justify-content: space-between;
   align-items: center;
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     p {
       font-size: 24px;
       font-weight: bold;

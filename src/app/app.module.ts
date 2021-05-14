@@ -16,7 +16,9 @@ import {
   NbInputModule,
   NbIconModule,
   NbCardModule,
-  NbSpinnerModule
+  NbSpinnerModule,
+  NbSidebarModule,
+  NbMenuModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -44,6 +46,8 @@ import { MyMoviesComponent } from './my-movies/my-movies.component';
     HttpClientModule,
     FormsModule,
     NbThemeModule.forRoot({ name: 'default' }),
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     NbButtonModule,

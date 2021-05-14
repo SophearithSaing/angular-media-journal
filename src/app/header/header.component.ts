@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbMediaBreakpointsService, NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sidebarService: NbSidebarService) { }
 
   ngOnInit(): void {
+  }
+
+  toggle() {
+    this.sidebarService.toggle(true);
   }
 
 }

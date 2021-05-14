@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NbMediaBreakpointsService, NbMenuItem, NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-journal';
+
+  title = 'media-journal';
+
+  items: NbMenuItem[] = [
+    {
+      title: 'Profile',
+      icon: 'person-outline',
+    },
+    {
+      title: 'Home',
+      icon: 'home-outline',
+    },
+    {
+      title: 'Movies',
+      icon: 'film-outline',
+    },
+    {
+      title: 'TV Shows',
+      icon: 'tv-outline',
+    },
+    {
+      title: 'Musics',
+      icon: 'music-outline',
+    },
+    {
+      title: 'Books',
+      icon: 'book-outline',
+    },
+  ];
 }
