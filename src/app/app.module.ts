@@ -30,6 +30,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { MyMoviesComponent } from './my-movies/my-movies.component';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +63,10 @@ import { MyMoviesComponent } from './my-movies/my-movies.component';
     NbInputModule,
     NbIconModule,
     NbCardModule,
-    NbSpinnerModule
+    NbSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
