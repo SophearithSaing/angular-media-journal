@@ -18,7 +18,8 @@ import {
   NbCardModule,
   NbSpinnerModule,
   NbSidebarModule,
-  NbMenuModule
+  NbMenuModule,
+  NbUserModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -64,6 +65,7 @@ import { environment } from 'src/environments/environment';
     NbIconModule,
     NbCardModule,
     NbSpinnerModule,
+    NbUserModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

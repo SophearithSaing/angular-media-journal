@@ -5,6 +5,30 @@
   </nb-layout-header>
 
   <nb-sidebar state="compacted">
+    <!-- User NOT logged in -->
+    <ng-template #guest>
+      <div class="user">
+        <nb-user
+          size="large"
+          name="Guest"
+          picture="user.photoURL">
+        </nb-user>
+        <button nbButton color="primary" size="small" (click)="auth.googleSignin()">Login with Google</button>
+      </div>
+    </ng-template>
+
+    <!-- User logged in -->
+    <ng-template #authenticated class="user">
+      <div *ngIf="auth.user$ | async as user" class="user">
+        <nb-user
+          size="large"
+          name="user.displayName"
+          title="user.email"
+          picture="user.photoURL">
+        </nb-user>
+        <button nbButton color="light" size="small" (click)="auth.signOut()">Logout</button>
+      </div>
+    </ng-template>
       <nb-menu [items]="items"></nb-menu>
   </nb-sidebar>
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuItem, NbSidebarService } from '@nebular/theme';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -36,4 +37,6 @@ export class AppComponent {
       icon: 'book-outline',
     },
   ];
+
+  constructor(public auth: AuthService) { }
 }
