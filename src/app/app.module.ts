@@ -37,6 +37,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { environment } from 'src/environments/environment';
+import { BooksComponent } from './books/books.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { environment } from 'src/environments/environment';
     HeaderComponent,
     FooterComponent,
     SearchComponent,
-    MyMoviesComponent
+    MyMoviesComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
