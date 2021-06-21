@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.themoviedb.org/3',
-  apiImageUrl: 'https://image.tmdb.org/t/p',
-  apiKey: 'c8fec81749b77e079a3c1d1ceffd40f2',
+  movieApiUrl: 'https://api.themoviedb.org/3',
+  movieApiImageUrl: 'https://image.tmdb.org/t/p',
+  movieApiKey: 'c8fec81749b77e079a3c1d1ceffd40f2',
+  bookApiUrl: 'https://www.googleapis.com/books/v1/volumes',
+  bookApiKey: 'AIzaSyBlo7SOulKQegfEp0859uMefuQwJfdAwqc',
   firebaseConfig: {
     apiKey: 'AIzaSyB-l3PJ89KeQdwcyC19EPLOPWSCSud2VmU',
     authDomain: 'media-journal-a6c37.firebaseapp.com',
