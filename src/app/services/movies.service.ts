@@ -11,9 +11,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class MoviesService {
 
-  apiUrl = environment.apiUrl;
-  apiImageUrl = environment.apiImageUrl;
-  apiKey = environment.apiKey;
+  apiUrl = environment.movieApiUrl;
+  apiImageUrl = environment.movieApiImageUrl;
+  apiKey = environment.movieApiKey;
   db = 'https://media-journal-a6c37-default-rtdb.asia-southeast1.firebasedatabase.app';
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
