@@ -19,7 +19,8 @@ import {
   NbSpinnerModule,
   NbSidebarModule,
   NbMenuModule,
-  NbUserModule
+  NbUserModule,
+  NbSelectModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -70,6 +71,7 @@ import { MusicComponent } from './music/music.component';
     NbCardModule,
     NbSpinnerModule,
     NbUserModule,
+    NbSelectModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

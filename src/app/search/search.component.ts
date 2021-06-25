@@ -13,6 +13,8 @@ export class SearchComponent implements OnInit {
   query = '';
   loading = false;
 
+  defaultSelect = 'movies';
+
   constructor(public moviesService: MoviesService) { }
 
   ngOnInit(): void {
