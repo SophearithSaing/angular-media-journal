@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   query = '';
   loading = false;
 
-  defaultSelect = 'movies';
+  selectValue = 'movies';
 
   constructor(public moviesService: MoviesService) { }
 

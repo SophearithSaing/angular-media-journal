@@ -1,6 +1,6 @@
 <div class="search-form">
   <nb-form-field>
-    <nb-select placeholder="Category" [(selected)]="defaultSelect">
+    <nb-select placeholder="Category" [(selected)]="selectValue">
       <nb-option value="movies">Movies</nb-option>
       <nb-option value="tv">TV Shows</nb-option>
       <nb-option value="books">Books</nb-option>
@@ -16,7 +16,7 @@
   </nb-form-field>
 </div>
 
-<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'movies'">
   <div accent="primary" class="movie" *ngFor="let movie of results">
       <img *ngIf="movie.poster_path !== null" class="movie__poster" src="{{ moviesService.getImage(movie.poster_path) }}" alt="">
       <img *ngIf="movie.poster_path === null" class="movie__poster-null">
@@ -32,4 +32,16 @@
         </p>
     </div>
   </div>
+</div>
+
+<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'tv'">
+
+</div>
+
+<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'books'">
+
+</div>
+
+<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'music'">
+
 </div>
