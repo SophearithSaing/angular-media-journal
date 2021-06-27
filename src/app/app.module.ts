@@ -40,6 +40,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { BooksComponent } from './books/books.component';
 import { MusicComponent } from './music/music.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MusicComponent } from './music/music.component';
     SearchComponent,
     MyMoviesComponent,
     BooksComponent,
-    MusicComponent
+    MusicComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
