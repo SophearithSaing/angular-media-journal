@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: '**', component: HomeComponent },
   { path: '/search', component: SearchComponent},
-  { path: '/profile', component: ProfileComponent },
-  { path: '/movies', component: MyMoviesComponent},
-  { path: '/music', component: MusicComponent },
-  { path: '/book', component: BooksComponent },
+  { path: '/profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: '/movies', component: MyMoviesComponent, canActivate: [AuthGuard] },
+  { path: '/music', component: MusicComponent, canActivate: [AuthGuard] },
+  { path: '/book', component: BooksComponent, canActivate: [AuthGuard] },
 
 ];
 
