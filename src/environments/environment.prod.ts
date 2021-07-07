@@ -5,6 +5,9 @@ export const environment = {
   movieApiKey: 'c8fec81749b77e079a3c1d1ceffd40f2',
   bookApiUrl: 'https://www.googleapis.com/books/v1/volumes',
   bookApiKey: 'AIzaSyBlo7SOulKQegfEp0859uMefuQwJfdAwqc',
+  musicApiUrl: 'https://deezerdevs-deezer.p.rapidapi.com/radio/%7Bid%7D',
+  musicApiHost: 'deezerdevs-deezer.p.rapidapi.com',
+  musicApiKey: '1864b49585msh1b330c9fbd66951p17b655jsn62aa82d9be9b',
   firebaseConfig: {
     apiKey: 'AIzaSyB-l3PJ89KeQdwcyC19EPLOPWSCSud2VmU',
     authDomain: 'media-journal-a6c37.firebaseapp.com',
