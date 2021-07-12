@@ -14,7 +14,7 @@ export class MoviesService {
   apiUrl = environment.movieApiUrl;
   apiImageUrl = environment.movieApiImageUrl;
   apiKey = environment.movieApiKey;
-  db = 'https://media-journal-a6c37-default-rtdb.asia-southeast1.firebasedatabase.app';
+  db = environment.firebaseDB;
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 
