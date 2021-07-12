@@ -20,7 +20,8 @@ export const environment = {
     storageBucket: 'media-journal-a6c37.appspot.com',
     messagingSenderId: '571508045248',
     appId: '1:571508045248:web:da699ef5edd9c54b1ec425'
-  }
+  },
+  firebaseDB: 'https://media-journal-a6c37-default-rtdb.asia-southeast1.firebasedatabase.app',
 };
 
 /*
