@@ -14,7 +14,6 @@ export class MoviesService {
   apiUrl = environment.movieApiUrl;
   apiImageUrl = environment.movieApiImageUrl;
   apiKey = environment.movieApiKey;
-  db = environment.firebaseDB;
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 

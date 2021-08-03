@@ -9,13 +9,12 @@ export const environment = {
   musicApiHost: 'deezerdevs-deezer.p.rapidapi.com',
   musicApiKey: '1864b49585msh1b330c9fbd66951p17b655jsn62aa82d9be9b',
   firebaseConfig: {
-    apiKey: 'AIzaSyB-l3PJ89KeQdwcyC19EPLOPWSCSud2VmU',
-    authDomain: 'media-journal-a6c37.firebaseapp.com',
-    databaseURL: 'https://media-journal-a6c37-default-rtdb.asia-southeast1.firebasedatabase.app',
-    projectId: 'media-journal-a6c37',
-    storageBucket: 'media-journal-a6c37.appspot.com',
-    messagingSenderId: '571508045248',
-    appId: '1:571508045248:web:da699ef5edd9c54b1ec425'
+    apiKey: 'AIzaSyADgG-1D_oG9vYpFDw8b-o2DVA8V8OOKSQ',
+    authDomain: 'movie-journal-ee8c8.firebaseapp.com',
+    projectId: 'movie-journal-ee8c8',
+    storageBucket: 'movie-journal-ee8c8.appspot.com',
+    messagingSenderId: '778186559787',
+    appId: '1:778186559787:web:ec3897f128123a2eb1b56e'
   },
   firebaseDB: 'https://media-journal-a6c37-default-rtdb.asia-southeast1.firebasedatabase.app',
 };
