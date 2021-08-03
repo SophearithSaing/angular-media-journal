@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'movies', component: MyMoviesComponent, canActivate: [AuthGuard] },
-  { path: 'music', component: MusicComponent, canActivate: [AuthGuard] },
-  { path: 'book', component: BooksComponent, canActivate: [AuthGuard] },
+  { path: 'musics', component: MusicComponent, canActivate: [AuthGuard] },
+  { path: 'books', component: BooksComponent, canActivate: [AuthGuard] },
 
 ];
 

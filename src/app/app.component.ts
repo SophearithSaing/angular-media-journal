@@ -9,32 +9,38 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
-  title = 'media-journal';
+  title = 'Media Journal';
 
   items: NbMenuItem[] = [
     {
       title: 'Profile',
       icon: 'person-outline',
+      link: '/profile'
     },
     {
       title: 'Home',
       icon: 'home-outline',
+      link: '/home'
     },
     {
       title: 'Movies',
       icon: 'film-outline',
+      link: '/movies'
     },
     {
       title: 'TV Shows',
       icon: 'tv-outline',
+      link: '/tv'
     },
     {
       title: 'Musics',
       icon: 'music-outline',
+      link: '/musics'
     },
     {
       title: 'Books',
       icon: 'book-outline',
+      link: '/books'
     },
   ];
 
