@@ -4,8 +4,22 @@
     <app-header></app-header>
   </nb-layout-header>
 
-  <nb-sidebar state="compacted">
+  <nb-sidebar fixed state="collapsed">
     <nb-menu [items]="items"></nb-menu>
+
+    <div *ngIf="auth.user$ | async; then authenticated else guest"></div>
+    <ng-template #guest>
+      <div class="btn-container">
+        <button class="btn btn--login" nbButton hero shape="round" size="small" status="primary"
+        (click)="auth.googleSignin()">Login with Google</button>
+      </div>
+    </ng-template>
+
+    <ng-template #authenticated>
+      <div *ngIf="auth.user$ | async as user" class="user btn-container">
+        <button class="btn btn--logout" nbButton hero shape="round" size="small" status="danger" (click)="auth.signOut()">Logout</button>
+      </div>
+    </ng-template>
   </nb-sidebar>
 
   <nb-layout-column>

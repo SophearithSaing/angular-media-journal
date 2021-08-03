@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggle() {
-    this.sidebarService.toggle(true);
+    this.sidebarService.toggle();
   }
 
 }
