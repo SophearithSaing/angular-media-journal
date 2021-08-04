@@ -13,11 +13,6 @@ export class AppComponent {
 
   items: NbMenuItem[] = [
     {
-      title: 'Profile',
-      icon: 'person-outline',
-      link: '/profile'
-    },
-    {
       title: 'Home',
       icon: 'home-outline',
       link: '/home'
@@ -33,14 +28,19 @@ export class AppComponent {
       link: '/tv'
     },
     {
-      title: 'Musics',
+      title: 'Music',
       icon: 'music-outline',
-      link: '/musics'
+      link: '/music'
     },
     {
       title: 'Books',
       icon: 'book-outline',
       link: '/books'
+    },
+    {
+      title: 'Profile',
+      icon: 'person-outline',
+      link: '/profile'
     },
   ];
 
