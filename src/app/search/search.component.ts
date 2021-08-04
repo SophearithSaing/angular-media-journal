@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../models/movie.model';
+import { Music } from '../models/music.model';
 import { MoviesService } from '../services/movies.service';
+import { MusicsService } from '../services/musics.service';
 
 @Component({
   selector: 'app-search',
@@ -9,28 +11,33 @@ import { MoviesService } from '../services/movies.service';
 })
 export class SearchComponent implements OnInit {
 
-  results: Movie[] = [];
+  movieResults: Movie[] = [];
+  musicResults: Music[] = [];
   query = '';
   loading = false;
+  showQuote = true;
 
-  selectValue = 'movies';
+  selectValue = 'music';
 
-  constructor(public moviesService: MoviesService) { }
+  constructor(public movies: MoviesService, private music: MusicsService) { }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.moviesService.searchMovies('justice league').subscribe(res => {
-      this.results = res.results;
-      console.log(this.results);
-      this.loading = false;
-    });
   }
 
   search = () => {
-    this.moviesService.searchMovies(this.query).subscribe(res => {
-      this.results = res.results;
-      console.log(this.results);
-    });
+    this.showQuote = false;
+    this.loading = true;
+    if (this.selectValue === 'movies') {
+      this.movies.searchMovies(this.query).subscribe(res => {
+        this.movieResults = res.results;
+        this.loading = false;
+      });
+    } else if (this.selectValue === 'music') {
+      this.music.searchMusic(this.query).subscribe(res => {
+        this.musicResults = res.data;
+        this.loading = false;
+      });
+    }
   }
 
 }

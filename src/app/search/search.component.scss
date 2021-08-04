@@ -3,14 +3,41 @@
   justify-content: center;
 }
 
+.quote {
+  opacity: .5;
+  height: 100vh;
+  padding-top: 20%;
+  text-align: center;
+
+  @media (max-width: 480px) {
+    padding-top: 30%;
+  }
+
+  &__content {
+    font-family: 'Handlee', cursive;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+  }
+  &__author {
+    font-family: 'Handlee', cursive;
+    margin: 10px 0;
+  }
+}
+
 .results {
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
+  @media (max-width: 480px) {
+    padding: 0 .5rem 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    gap: 1rem;
+  }
 }
 
-.movie {
+.item {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -19,38 +46,48 @@
     background-color: rgba($color: #000000, $alpha: 0.7);
     transition: 0.5s ease;
     border-radius: 10px;
-    .movie__poster {
+    .item__poster {
       border-radius: 10px 10px 0 0;
     }
     .image-overlay {
       opacity: 1;
     }
-    .movie__date {
-      color: #FFF;
+    .item__date,
+    .item__title,
+    .item__singer {
+      color: #fff;
     }
-    .movie__title {
-      color: #FFF;
+  }
+  &__poster {
+    flex-basis: 75%;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba($color: #000000, $alpha: 0.3);
+
+    &--null {
+      text-align: center;
+      background: #000000;
+        p {
+          color: #fff;
+          margin-top: 45%;
+          font-size: 20px;
+        }
     }
   }
   &__date {
-    padding: 10px 5px 5px;
+    padding: 10px 10px 5px;
     margin: 0;
     text-align: center;
-  }
-  &__image {
-    position: relative;
-  }
-  &__poster {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 10px 5px 10px rgba($color: #000000, $alpha: 0.3);
   }
   &__title {
     padding: 10px;
     margin: 0;
     font-size: 18px;
     font-weight: 600;
+    text-align: center;
+  }
+  &__singer {
+    padding: 0 10px;
+    margin: 0;
     text-align: center;
   }
   .image-overlay {

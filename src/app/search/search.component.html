@@ -10,24 +10,43 @@
   <nb-form-field>
     <input nbInput type="text" [(ngModel)]="query" placeholder="Enter title...">
     <button nbSuffix nbButton ghost (click)="search()">
-      <nb-icon icon="search-outline" status="pimary">
-      </nb-icon>
+      <nb-icon icon="search-outline" status="pimary"></nb-icon>
     </button>
   </nb-form-field>
 </div>
 
+<div class="quote" *ngIf="selectValue === 'movies' && movieResults.length === 0 && loading === false">
+  <p class="quote__content">
+    “Every film should have its own world, a logic and feel to it that expands beyond the exact image that the audience is seeing.”
+  </p>
+  <h3 class="quote__author">
+    Christopher Nolan
+  </h3>
+</div>
+
+<div class="quote" *ngIf="selectValue === 'music' && musicResults.length === 0 && loading === false">
+  <p class="quote__content">
+    “There’s no better way to get your point across than to put it in a beautiful song.”
+  </p>
+  <h3 class="quote__author">
+    Ed Sheeran
+  </h3>
+</div>
+
 <div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'movies'">
-  <div accent="primary" class="movie" *ngFor="let movie of results">
-      <img *ngIf="movie.poster_path !== null" class="movie__poster" src="{{ moviesService.getImage(movie.poster_path) }}" alt="">
-      <img *ngIf="movie.poster_path === null" class="movie__poster-null">
+  <div accent="primary" class="item" *ngFor="let movie of movieResults">
+      <img *ngIf="movie.poster_path !== null" class="item__poster" src="{{ movies.getImage(movie.poster_path) }}" alt="">
+      <div *ngIf="movie.poster_path === null" class="item__poster item__poster--null">
+        <p>No poster available</p>
+      </div>
       <div class="image-overlay">
         <button nbButton class="image-overlay__button">Save</button>
       </div>
-      <div class="movie__info">
-        <p class="movie__date">
-          {{ moviesService.formatDate(movie.release_date) }}
+      <div class="item__info">
+        <p class="item__date">
+          {{ movies.formatDate(movie.release_date) }}
         </p>
-        <p class="movie__title">
+        <p class="item__title">
           {{ movie.title }}
         </p>
     </div>
@@ -43,5 +62,21 @@
 </div>
 
 <div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'music'">
-
+  <div accent="primary" class="item" *ngFor="let music of musicResults">
+    <img *ngIf="music.album.cover_big !== null" class="item__poster" src="{{ music.album.cover_big }}" alt="">
+    <div *ngIf="music.album.cover_big === null" class="item__poster item__poster--null">
+      <p>No poster available</p>
+    </div>
+    <div class="image-overlay">
+      <button nbButton class="image-overlay__button">Save</button>
+    </div>
+    <div class="item__info">
+      <p class="item__title">
+        {{ music.title }}
+      </p>
+      <p class="item__singer">
+        {{ music.artist.name }}
+      </p>
+    </div>
+  </div>
 </div>
