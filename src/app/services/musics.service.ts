@@ -12,7 +12,18 @@ export class MusicsService {
   apiUrl = environment.musicApiUrl;
   apiHost = environment.musicApiHost;
   apiKey = environment.musicApiKey;
-  db = environment.firebaseDB;
+
+  options = {
+    headers: {
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': this.apiHost
+    }
+  };
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+
+  searchMusic = (query: string) => {
+    const url = `${this.apiUrl}/search?q=${query}`;
+    return this.http.get<{ data: Music[] }>(url, this.options);
+  }
 }
