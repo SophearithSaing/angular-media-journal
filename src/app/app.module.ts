@@ -20,7 +20,8 @@ import {
   NbSidebarModule,
   NbMenuModule,
   NbUserModule,
-  NbSelectModule
+  NbSelectModule,
+  NbDatepickerModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
@@ -74,6 +75,7 @@ import { ProfileComponent } from './profile/profile.component';
     NbSpinnerModule,
     NbUserModule,
     NbSelectModule,
+    NbDatepickerModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

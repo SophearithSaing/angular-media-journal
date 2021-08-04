@@ -16,12 +16,14 @@ export class SearchComponent implements OnInit {
   query = '';
   loading = false;
   showQuote = true;
+  openModal = false;
 
-  selectValue = 'music';
+  selectValue = 'movie';
 
   constructor(public movies: MoviesService, private music: MusicsService) { }
 
   ngOnInit(): void {
+    // Nothing
   }
 
   search = () => {
@@ -38,6 +40,18 @@ export class SearchComponent implements OnInit {
         this.loading = false;
       });
     }
+  }
+
+  selectMovie = () => {
+    this.openModal = true;
+  }
+
+  saveMovie = () => {
+    this.openModal = false;
+  }
+
+  closeModal = () => {
+    this.openModal = false;
   }
 
 }
