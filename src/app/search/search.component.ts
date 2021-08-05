@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   query = '';
   loading = false;
   showQuote = true;
-  openModal = false;
+  openModal = true;
 
   selectValue = 'movies';
 

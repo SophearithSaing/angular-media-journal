@@ -32,6 +32,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { MyMoviesComponent } from './my-movies/my-movies.component';
+import { BooksComponent } from './books/books.component';
+import { MusicComponent } from './music/music.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -39,9 +42,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { environment } from 'src/environments/environment';
-import { BooksComponent } from './books/books.component';
-import { MusicComponent } from './music/music.component';
-import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [

@@ -84,7 +84,7 @@
 <div class="popup" *ngIf="openModal === true">
   <nb-card class="popup__card" *ngIf="selectValue === 'movies'">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
-    <nb-card-body>
+    <nb-card-body class="popup__card--body">
       <div class="popup__form">
         <nb-form-field class="popup__input">
           <input nbInput placeholder="Start Date" [nbDatepicker]="dateTimePicker">
@@ -115,7 +115,7 @@
 
   <nb-card class="popup__card" *ngIf="selectValue === 'music'">
     <nb-card-header class="popup__card--header">Save Music</nb-card-header>
-    <nb-card-body>
+    <nb-card-body class="popup__card--body">
       <div class="popup__form">
         <nb-form-field class="popup__input">
           <input nbInput placeholder="Discover Date" [nbDatepicker]="dateTimePicker">
