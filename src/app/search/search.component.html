@@ -40,7 +40,7 @@
         <p>No poster available</p>
       </div>
       <div class="image-overlay">
-        <button nbButton class="image-overlay__button">Save</button>
+        <button nbButton class="image-overlay__button" (click)="selectMovie()">Save</button>
       </div>
       <div class="item__info">
         <p class="item__date">
@@ -68,7 +68,7 @@
       <p>No poster available</p>
     </div>
     <div class="image-overlay">
-      <button nbButton class="image-overlay__button" (click)="selectMovie()">Save</button>
+      <button nbButton class="image-overlay__button" (click)="selectMusic()">Save</button>
     </div>
     <div class="item__info">
       <p class="item__title">
@@ -82,7 +82,7 @@
 </div>
 
 <div class="popup" *ngIf="openModal === true">
-  <nb-card class="popup__card">
+  <nb-card class="popup__card" *ngIf="selectValue === 'movies'">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body>
       <div class="popup__form">
@@ -108,8 +108,35 @@
           </nb-select>
         </nb-form-field>
       </div>
-      <button nbButton hero status="danger" class="popup__button" (click)="closeModal()">Cancel</button>
-      <button nbButton hero status="primary" class="popup__button" (click)="saveMovie()">Save</button>
+      <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
+      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveMovie()">Save</button>
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card class="popup__card" *ngIf="selectValue === 'music'">
+    <nb-card-header class="popup__card--header">Save Music</nb-card-header>
+    <nb-card-body>
+      <div class="popup__form">
+        <nb-form-field class="popup__input">
+          <input nbInput placeholder="Discover Date" [nbDatepicker]="dateTimePicker">
+          <nb-datepicker #dateTimePicker></nb-datepicker>
+        </nb-form-field>
+        <nb-form-field class="popup__input">
+          <nb-select placeholder="Rating">
+            <nb-option value="1">1</nb-option>
+            <nb-option value="2">2</nb-option>
+            <nb-option value="3">4</nb-option>
+            <nb-option value="5">5</nb-option>
+            <nb-option value="6">6</nb-option>
+            <nb-option value="7">7</nb-option>
+            <nb-option value="8">8</nb-option>
+            <nb-option value="9">9</nb-option>
+            <nb-option value="10">10</nb-option>
+          </nb-select>
+        </nb-form-field>
+      </div>
+      <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
+      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveMusic()">Save</button>
     </nb-card-body>
   </nb-card>
 </div>

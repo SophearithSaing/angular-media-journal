@@ -18,12 +18,15 @@ export class SearchComponent implements OnInit {
   showQuote = true;
   openModal = false;
 
-  selectValue = 'movie';
+  selectValue = 'movies';
 
   constructor(public movies: MoviesService, private music: MusicsService) { }
 
   ngOnInit(): void {
-    // Nothing
+    // this.movies.searchMovies('avengers').subscribe(res => {
+    //   this.movieResults = res.results;
+    //   this.loading = false;
+    // });
   }
 
   search = () => {
@@ -47,6 +50,14 @@ export class SearchComponent implements OnInit {
   }
 
   saveMovie = () => {
+    this.openModal = false;
+  }
+
+  selectMusic = () => {
+    this.openModal = true;
+  }
+
+  saveMusic = () => {
     this.openModal = false;
   }
 
