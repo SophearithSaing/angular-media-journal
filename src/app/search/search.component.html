@@ -33,6 +33,15 @@
   </h3>
 </div>
 
+<div class="quote" *ngIf="selectValue === 'books' && bookResults.length === 0 && loading === false">
+  <p class="quote__content">
+    “I haven't found a good quote for this part yet.”
+  </p>
+  <h3 class="quote__author">
+    Developer
+  </h3>
+</div>
+
 <div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'movies'">
   <div accent="primary" class="item" *ngFor="let movie of movieResults">
       <img *ngIf="movie.poster_path !== null" class="item__poster" src="{{ movies.getImage(movie.poster_path) }}" alt="">
@@ -40,7 +49,7 @@
         <p>No poster available</p>
       </div>
       <div class="image-overlay">
-        <button nbButton class="image-overlay__button" (click)="selectMovie()">Save</button>
+        <button nbButton class="image-overlay__button" (click)="selectItem(movie)">Save</button>
       </div>
       <div class="item__info">
         <p class="item__date">
@@ -57,8 +66,24 @@
 
 </div>
 
-<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'books'">
-
+<div class="book-results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'books'">
+  <div accent="primary" class="item" *ngFor="let book of bookResults">
+    <img *ngIf="book.volumeInfo.imageLinks.thumbnail !== null" class="item__poster" src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="">
+    <div *ngIf="book.volumeInfo.imageLinks.thumbnail === null" class="item__poster item__poster--null">
+      <p>No poster available</p>
+    </div>
+    <div class="image-overlay">
+      <button nbButton class="image-overlay__button" (click)="selectItem(book)">Save</button>
+    </div>
+    <div class="item__info">
+      <p class="item__title">
+        {{ book.volumeInfo.title }}
+      </p>
+      <p class="item__author" *ngFor="let author of book.volumeInfo.authors">
+        {{ author }}
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'music'">
@@ -68,7 +93,7 @@
       <p>No poster available</p>
     </div>
     <div class="image-overlay">
-      <button nbButton class="image-overlay__button" (click)="selectMusic()">Save</button>
+      <button nbButton class="image-overlay__button" (click)="selectItem(music)">Save</button>
     </div>
     <div class="item__info">
       <p class="item__title">
@@ -82,7 +107,7 @@
 </div>
 
 <div class="popup" *ngIf="openModal === true">
-  <nb-card class="popup__card" *ngIf="selectValue === 'movies'">
+  <nb-card class="popup__card" *ngIf="selectValue === 'movies' || selectValue === 'books' ">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body class="popup__card--body">
       <div class="popup__form">
@@ -109,7 +134,7 @@
         </nb-form-field>
       </div>
       <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
-      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveMovie()">Save</button>
+      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveItem()">Save</button>
     </nb-card-body>
   </nb-card>
 
@@ -118,7 +143,7 @@
     <nb-card-body class="popup__card--body">
       <div class="popup__form">
         <nb-form-field class="popup__input">
-          <input nbInput placeholder="Discover Date" [nbDatepicker]="dateTimePicker">
+          <input nbInput placeholder="Discovered Date" [nbDatepicker]="dateTimePicker">
           <nb-datepicker #dateTimePicker></nb-datepicker>
         </nb-form-field>
         <nb-form-field class="popup__input">
@@ -136,7 +161,7 @@
         </nb-form-field>
       </div>
       <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
-      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveMusic()">Save</button>
+      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveItem()">Save</button>
     </nb-card-body>
   </nb-card>
 </div>

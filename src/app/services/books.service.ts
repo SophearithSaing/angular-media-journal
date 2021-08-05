@@ -13,7 +13,7 @@ export class BooksService {
 
   constructor(private http: HttpClient) { }
 
-  getBooks(query: string) {
+  searchBooks(query: string) {
     const url = `${this.apiUrl}?q=${query}&key=${this.apiKey}`;
     return this.http.get<{ totalItems: number, items: Array<Book> }>(url);
   }
