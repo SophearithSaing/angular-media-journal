@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import myMovies from '../../assets/myMovies.json';
-import { SavedMovie } from '../models/savedMovie.model';
+import { FirebaseRes, SavedMovie } from '../models/savedMovie.model';
 import { MoviesService } from '../services/movies.service';
 
 @Component({
@@ -10,9 +10,10 @@ import { MoviesService } from '../services/movies.service';
 })
 export class MyMoviesComponent implements OnInit {
 
-  myMovies: SavedMovie[] = myMovies;
+  // myMovies: SavedMovie[] = [];
+  myMovies: any[] = [];
 
-  organziedList: Array<{ month: string; movies: SavedMovie[] }> = [
+  organziedList: Array<{ month: string; movies: any[] }> = [
     {
       month: 'January',
       movies: []
@@ -65,16 +66,25 @@ export class MyMoviesComponent implements OnInit {
 
   testList = JSON.parse(localStorage.getItem('organizedList') || '{}');
 
-  constructor(public moviesService: MoviesService) { }
+  constructor(public movies: MoviesService) { }
 
   ngOnInit(): void {
-    this.sortMovies();
-    this.organizeMovie();
-    localStorage.setItem('organizedList', JSON.stringify(this.organziedList));
+    console.log(this.myMovies);
+    this.movies.getSavedMovie('sophearithsaing123@gmail.com').subscribe((res) => {
+      res.docs.forEach(element => {
+        this.myMovies.push(element.data());
+      });
+      this.sortMovies();
+      this.organizeMovie();
+    });
+    // this.sortMovies();
+    // console.log(myMovies);
+    // this.organizeMovie();
+    // localStorage.setItem('organizedList', JSON.stringify(this.organziedList));
   }
 
   sortMovies = () => {
-    myMovies.sort((a, b) => {
+    this.myMovies.sort((a, b) => {
       const dateA = new Date(a.endDate).getTime();
       const dateB = new Date(b.endDate).getTime();
       return dateA - dateB;
@@ -82,7 +92,7 @@ export class MyMoviesComponent implements OnInit {
   }
 
   organizeMovie = () => {
-    myMovies.forEach(movie => {
+    this.myMovies.forEach(movie => {
       this.organziedList.forEach(item => {
         const movieMonth = new Date(movie.endDate).toLocaleDateString('en', { month: 'long' });
         if (movieMonth === item.month) {

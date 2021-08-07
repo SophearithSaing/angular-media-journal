@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../models/movie.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FirebaseRes } from '../models/savedMovie.model';
 
 
 @Injectable({
@@ -51,6 +52,7 @@ export class MoviesService {
   }
 
   saveMovie = (data: any) => {
+    console.log(data);
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('movies')
@@ -59,7 +61,7 @@ export class MoviesService {
     });
   }
 
-  getSavedMovie = (id: string) => {
-    return this.firestore.collection('movies').snapshotChanges();
+  getSavedMovie = (email: string) => {
+    return this.firestore.collection('movies', ref => ref.where('email', '==', email)).get();
   }
 }

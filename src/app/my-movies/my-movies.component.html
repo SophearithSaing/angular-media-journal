@@ -1,10 +1,10 @@
-<div class="movies" *ngFor="let item of testList">
+<div class="movies" *ngFor="let item of organziedList">
   <h2 class="movies__month" *ngIf="item.movies.length > 0">
     {{ item.month }}
   </h2>
   <div accent="primary" class="movie" *ngFor="let movie of item.movies">
     <div class="movie__image">
-      <img *ngIf="movie.movie.poster_path !== null" class="movie__poster" src="{{ moviesService.getImage(movie.movie.poster_path) }}"
+      <img *ngIf="movie.movie.poster_path !== null" class="movie__poster" src="{{ movies.getImage(movie.movie.poster_path) }}"
         alt="">
       <img *ngIf="movie.movie.poster_path === null" class="movie__poster-null">
       <div class="image-overlay">
@@ -15,7 +15,7 @@
     </div>
     <div class="movie__info">
       <p class="movie__date">
-        {{ moviesService.formatDate(movie.endDate) }}
+        {{ movies.formatDate(movie.endDate) }}
       </p>
       <p class="movie__title">
         {{ movie.movie.title }} ({{ getYear(movie.movie.release_date) }})

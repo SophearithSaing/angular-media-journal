@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Nebular
 import {
@@ -61,6 +61,7 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

@@ -110,31 +110,33 @@
   <nb-card class="popup__card" *ngIf="selectValue === 'movies' || selectValue === 'books' ">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body class="popup__card--body">
-      <div class="popup__form">
-        <nb-form-field class="popup__input">
-          <input nbInput placeholder="Start Date" [nbDatepicker]="dateTimePicker">
-          <nb-datepicker #dateTimePicker></nb-datepicker>
-        </nb-form-field>
-        <nb-form-field class="popup__input">
-          <input nbInput placeholder="End Date" [nbDatepicker]="dateTimePicker">
-          <nb-datepicker #dateTimePicker></nb-datepicker>
-        </nb-form-field>
-        <nb-form-field class="popup__input">
-          <nb-select placeholder="Rating">
-            <nb-option value="1">1</nb-option>
-            <nb-option value="2">2</nb-option>
-            <nb-option value="3">4</nb-option>
-            <nb-option value="5">5</nb-option>
-            <nb-option value="6">6</nb-option>
-            <nb-option value="7">7</nb-option>
-            <nb-option value="8">8</nb-option>
-            <nb-option value="9">9</nb-option>
-            <nb-option value="10">10</nb-option>
-          </nb-select>
-        </nb-form-field>
-      </div>
-      <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
-      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveItem()">Save</button>
+      <form [formGroup]="saveForm" (ngSubmit)="saveItem()">
+        <div class="popup__form">
+          <nb-form-field class="popup__input">
+            <input readonly nbInput placeholder="Start Date" [nbDatepicker]="startDate" formControlName="startDate">
+            <nb-datepicker #startDate></nb-datepicker>
+          </nb-form-field>
+          <nb-form-field class="popup__input">
+            <input readonly nbInput placeholder="End Date" [nbDatepicker]="endDate" formControlName="endDate">
+            <nb-datepicker #endDate></nb-datepicker>
+          </nb-form-field>
+          <nb-form-field class="popup__input">
+            <nb-select placeholder="Rating" formControlName="rating">
+              <nb-option value="1">1</nb-option>
+              <nb-option value="2">2</nb-option>
+              <nb-option value="3">4</nb-option>
+              <nb-option value="5">5</nb-option>
+              <nb-option value="6">6</nb-option>
+              <nb-option value="7">7</nb-option>
+              <nb-option value="8">8</nb-option>
+              <nb-option value="9">9</nb-option>
+              <nb-option value="10">10</nb-option>
+            </nb-select>
+          </nb-form-field>
+        </div>
+        <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
+        <button nbButton hero status="primary" size="small" class="popup__button" type="submit">Save</button>
+      </form>
     </nb-card-body>
   </nb-card>
 
