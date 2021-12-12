@@ -64,4 +64,8 @@ export class MoviesService {
   getSavedMovie = (email: string) => {
     return this.firestore.collection('movies', ref => ref.where('email', '==', email)).get();
   }
+
+  getSavedTopMovie = (email: string) => {
+    return this.firestore.collection('movies', ref => ref.where('email', '==', email).orderBy('rating', 'desc').orderBy('movie.original_title', 'asc')).get();
+  }
 }
