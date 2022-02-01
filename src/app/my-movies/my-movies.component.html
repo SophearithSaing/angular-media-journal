@@ -23,3 +23,27 @@
     </div>
   </div>
 </div>
+
+<h1>Top Movies</h1>
+<div class="movies">
+  <div accent="primary" class="movie" *ngFor="let movie of topMovies | slice:0:15;">
+    <div class="movie__image">
+      <img *ngIf="movie.movie.poster_path !== null" class="movie__poster"
+        src="{{ movies.getImage(movie.movie.poster_path) }}" alt="">
+      <img *ngIf="movie.movie.poster_path === null" class="movie__poster-null">
+      <div class="image-overlay">
+        <p class="rating">
+          {{ movie.rating }} <nb-icon icon="star"></nb-icon>
+        </p>
+      </div>
+    </div>
+    <div class="movie__info">
+      <p class="movie__date">
+        {{ movies.formatDate(movie.endDate) }}
+      </p>
+      <p class="movie__title">
+        {{ movie.movie.title }} ({{ getYear(movie.movie.release_date) }})
+      </p>
+    </div>
+  </div>
+</div>

@@ -10,8 +10,8 @@ import { MoviesService } from '../services/movies.service';
 })
 export class MyMoviesComponent implements OnInit {
 
-  // myMovies: SavedMovie[] = [];
   myMovies: any[] = [];
+  topMovies: any[] = [];
 
   organziedList: Array<{ month: string; movies: any[] }> = [
     {
@@ -64,8 +64,6 @@ export class MyMoviesComponent implements OnInit {
     },
   ];
 
-  testList = JSON.parse(localStorage.getItem('organizedList') || '{}');
-
   constructor(public movies: MoviesService) { }
 
   ngOnInit(): void {
@@ -77,10 +75,11 @@ export class MyMoviesComponent implements OnInit {
       this.sortMovies();
       this.organizeMovie();
     });
-    // this.sortMovies();
-    // console.log(myMovies);
-    // this.organizeMovie();
-    // localStorage.setItem('organizedList', JSON.stringify(this.organziedList));
+    this.movies.getSavedTopMovie('sophearithsaing123@gmail.com').subscribe((res) => {
+      res.docs.forEach(element => {
+        this.topMovies.push(element.data());
+      });
+    });
   }
 
   sortMovies = () => {
