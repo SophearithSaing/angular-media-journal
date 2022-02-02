@@ -82,8 +82,9 @@ export class SearchComponent implements OnInit {
         network: '',
         rating: this.saveForm.value.rating,
       };
-      // console.log(savedMovie);
+      console.log(savedMovie);
       this.movies.saveMovie(savedMovie);
+      this.saveForm.reset();
     });
     this.openModal = false;
   }
