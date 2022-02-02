@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import myMovies from '../../assets/myMovies.json';
+import { Movie } from '../models/movie.model';
 import { FirebaseRes, SavedMovie } from '../models/savedMovie.model';
 import { MoviesService } from '../services/movies.service';
 
@@ -13,61 +14,17 @@ export class MyMoviesComponent implements OnInit {
   myMovies: any[] = [];
   topMovies: any[] = [];
 
-  organziedList: Array<{ month: string; movies: any[] }> = [
-    {
-      month: 'January',
-      movies: []
-    },
-    {
-      month: 'February',
-      movies: []
-    },
-    {
-      month: 'March',
-      movies: []
-    },
-    {
-      month: 'April',
-      movies: []
-    },
-    {
-      month: 'May',
-      movies: []
-    },
-    {
-      month: 'June',
-      movies: []
-    },
-    {
-      month: 'July',
-      movies: []
-    },
-    {
-      month: 'August',
-      movies: []
-    },
-    {
-      month: 'September',
-      movies: []
-    },
-    {
-      month: 'October',
-      movies: []
-    },
-    {
-      month: 'November',
-      movies: []
-    },
-    {
-      month: 'December',
-      movies: []
-    },
-  ];
+  yearlyList: Array<{
+    year: number,
+    months: Array<{
+      month: string,
+      movies: Array<any>,
+    }>,
+  }> = [];
 
   constructor(public movies: MoviesService) { }
 
   ngOnInit(): void {
-    console.log(this.myMovies);
     this.movies.getSavedMovie('sophearithsaing123@gmail.com').subscribe((res) => {
       res.docs.forEach(element => {
         this.myMovies.push(element.data());
@@ -92,11 +49,29 @@ export class MyMoviesComponent implements OnInit {
 
   organizeMovie = () => {
     this.myMovies.forEach(movie => {
-      this.organziedList.forEach(item => {
-        const movieMonth = new Date(movie.endDate).toLocaleDateString('en', { month: 'long' });
-        if (movieMonth === item.month) {
-          item.movies.push(movie);
+      const movieMonth = new Date(movie.endDate).toLocaleDateString('en', { month: 'long' });
+      const movieYear = new Date(movie.endDate).getFullYear();
+      const month = (months: { month: string }) => months.month === movieMonth;
+      const year = (years: { year: number }) => years.year === movieYear;
+      if (this.yearlyList.some(year) === false) {
+        this.yearlyList.push({
+          year: movieYear,
+          months: [],
+        });
+      }
+      this.yearlyList.forEach(item => {
+        if (item.months.some(month) === false && movieYear === item.year) {
+          item.months.push({
+            month: movieMonth,
+            movies: [],
+          });
         }
+        item.months.forEach(element => {
+          if (movieMonth === element.month && movieYear === item.year) {
+            element.movies.push(movie);
+            console.log(`Adding ${movie.movie.original_title} to year ${item.year}`);
+          }
+        });
       });
     });
   }
@@ -110,5 +85,4 @@ export class MyMoviesComponent implements OnInit {
     num = Math.round(num);
     return Array(num).fill(num);
   }
-
 }

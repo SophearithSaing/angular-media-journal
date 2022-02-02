@@ -1,25 +1,30 @@
-<div class="movies" *ngFor="let item of organziedList">
-  <h2 class="movies__month" *ngIf="item.movies.length > 0">
-    {{ item.month }}
-  </h2>
-  <div accent="primary" class="movie" *ngFor="let movie of item.movies">
-    <div class="movie__image">
-      <img *ngIf="movie.movie.poster_path !== null" class="movie__poster" src="{{ movies.getImage(movie.movie.poster_path) }}"
-        alt="">
-      <img *ngIf="movie.movie.poster_path === null" class="movie__poster-null">
-      <div class="image-overlay">
-        <p class="rating">
-          {{ movie.rating }} <nb-icon icon="star"></nb-icon>
+<div class="year" *ngFor="let year of yearlyList">
+  <h1>
+    {{ year.year }}
+  </h1>
+  <div class="movies" *ngFor="let month of year.months">
+    <h2 class="movies__month" *ngIf="month.movies.length > 0">
+      {{ month.month }}
+    </h2>
+    <div accent="primary" class="movie" *ngFor="let movie of month.movies">
+      <div class="movie__image">
+        <img *ngIf="movie.movie.poster_path !== null" class="movie__poster"
+          src="{{ movies.getImage(movie.movie.poster_path) }}" alt="">
+        <img *ngIf="movie.movie.poster_path === null" class="movie__poster-null">
+        <div class="image-overlay">
+          <p class="rating">
+            {{ movie.rating }} <nb-icon icon="star"></nb-icon>
+          </p>
+        </div>
+      </div>
+      <div class="movie__info">
+        <p class="movie__date">
+          {{ movies.formatDate(movie.endDate) }}
+        </p>
+        <p class="movie__title">
+          {{ movie.movie.title }} ({{ getYear(movie.movie.release_date) }})
         </p>
       </div>
-    </div>
-    <div class="movie__info">
-      <p class="movie__date">
-        {{ movies.formatDate(movie.endDate) }}
-      </p>
-      <p class="movie__title">
-        {{ movie.movie.title }} ({{ getYear(movie.movie.release_date) }})
-      </p>
     </div>
   </div>
 </div>

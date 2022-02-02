@@ -1,5 +1,14 @@
-.movies {
+.year {
   padding: 0 2rem 1rem;
+  @media (max-width: 480px) {
+    padding: 0 .5rem 1rem;
+  }
+  h1 {
+    margin: 16px 0;
+    text-align: center;
+  }
+}
+.movies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
