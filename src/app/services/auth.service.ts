@@ -59,4 +59,8 @@ export class AuthService {
     return userRef.set(data, { merge: true });
 
   }
+
+  public getUserData() {
+    return this.afAuth.currentUser;
+  }
 }

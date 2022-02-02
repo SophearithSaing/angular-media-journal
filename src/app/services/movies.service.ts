@@ -61,11 +61,11 @@ export class MoviesService {
     });
   }
 
-  getSavedMovie = (email: string) => {
+  getSavedMovie = (email: string | null | undefined) => {
     return this.firestore.collection('movies', ref => ref.where('email', '==', email)).get();
   }
 
-  getSavedTopMovie = (email: string) => {
+  getSavedTopMovie = (email: string | null | undefined) => {
     return this.firestore.collection('movies', ref => ref.where('email', '==', email).orderBy('rating', 'desc').orderBy('movie.original_title', 'asc')).get();
   }
 }

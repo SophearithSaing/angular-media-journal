@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import myMovies from '../../assets/myMovies.json';
 import { Movie } from '../models/movie.model';
 import { FirebaseRes, SavedMovie } from '../models/savedMovie.model';
+import { AuthService } from '../services/auth.service';
 import { MoviesService } from '../services/movies.service';
 
 @Component({
@@ -22,19 +23,25 @@ export class MyMoviesComponent implements OnInit {
     }>,
   }> = [];
 
-  constructor(public movies: MoviesService) { }
+  email: string | null | undefined = '';
+
+  constructor(public movies: MoviesService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.movies.getSavedMovie('sophearithsaing123@gmail.com').subscribe((res) => {
-      res.docs.forEach(element => {
-        this.myMovies.push(element.data());
+    this.auth.getUserData().then(userData => {
+      this.email = userData?.email;
+
+      this.movies.getSavedMovie(this.email).subscribe((res) => {
+        res.docs.forEach(element => {
+          this.myMovies.push(element.data());
+        });
+        this.sortMovies();
+        this.organizeMovie();
       });
-      this.sortMovies();
-      this.organizeMovie();
-    });
-    this.movies.getSavedTopMovie('sophearithsaing123@gmail.com').subscribe((res) => {
-      res.docs.forEach(element => {
-        this.topMovies.push(element.data());
+      this.movies.getSavedTopMovie(this.email).subscribe((res) => {
+        res.docs.forEach(element => {
+          this.topMovies.push(element.data());
+        });
       });
     });
   }
@@ -69,7 +76,6 @@ export class MyMoviesComponent implements OnInit {
         item.months.forEach(element => {
           if (movieMonth === element.month && movieYear === item.year) {
             element.movies.push(movie);
-            console.log(`Adding ${movie.movie.original_title} to year ${item.year}`);
           }
         });
       });
