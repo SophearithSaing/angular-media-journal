@@ -226,6 +226,7 @@
 
   &__form {
     display: flex;
+    justify-content: center;
     gap: 15px;
 
     @media (max-width: 768px) {

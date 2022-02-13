@@ -107,17 +107,13 @@
 </div>
 
 <div class="popup" *ngIf="openModal === true">
-  <nb-card class="popup__card" *ngIf="selectValue === 'movies' || selectValue === 'books' ">
+  <nb-card class="popup__card" *ngIf="selectValue === 'movies'">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body class="popup__card--body">
       <form [formGroup]="saveForm" (ngSubmit)="saveItem()">
         <div class="popup__form">
           <nb-form-field class="popup__input">
-            <input readonly nbInput placeholder="Start Date" [nbDatepicker]="startDate" formControlName="startDate">
-            <nb-datepicker #startDate></nb-datepicker>
-          </nb-form-field>
-          <nb-form-field class="popup__input">
-            <input readonly nbInput placeholder="End Date" [nbDatepicker]="endDate" formControlName="endDate">
+            <input readonly nbInput placeholder="Date" [nbDatepicker]="endDate" formControlName="endDate">
             <nb-datepicker #endDate></nb-datepicker>
           </nb-form-field>
           <nb-form-field class="popup__input">

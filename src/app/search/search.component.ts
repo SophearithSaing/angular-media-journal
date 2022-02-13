@@ -77,7 +77,6 @@ export class SearchComponent implements OnInit {
       const savedMovie: SavedMovie = {
         email: user?.email,
         movie: this.selectedItem,
-        startDate,
         endDate,
         network: '',
         rating: this.saveForm.value.rating,
