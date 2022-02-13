@@ -7,6 +7,10 @@ nb-sidebar {
   transition: width 0.5s;
 }
 
+.collapsed {
+  width: 0 !important;
+}
+
 .btn-container {
   margin-top: 3rem;
   width: 100%;

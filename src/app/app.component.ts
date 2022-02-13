@@ -1,48 +1,54 @@
 import { Component } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuItem, NbSidebarService } from '@nebular/theme';
+import { NbMenuItem, NbSidebarService } from '@nebular/theme';
 import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   title = 'Media Journal';
 
   items: NbMenuItem[] = [
     {
       title: 'Home',
       icon: 'home-outline',
-      link: '/home'
+      link: '/home',
     },
     {
       title: 'Movies',
       icon: 'film-outline',
-      link: '/movies'
+      link: '/movies',
     },
     {
       title: 'TV Shows',
       icon: 'tv-outline',
-      link: '/tv'
+      link: '/tv',
     },
     {
       title: 'Music',
       icon: 'music-outline',
-      link: '/music'
+      link: '/music',
     },
     {
       title: 'Books',
       icon: 'book-outline',
-      link: '/books'
+      link: '/books',
     },
     {
       title: 'Profile',
       icon: 'person-outline',
-      link: '/profile'
+      link: '/profile',
     },
   ];
 
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    private sidebarService: NbSidebarService
+  ) {}
+
+  closeNav() {
+    this.sidebarService.collapse();
+  }
 }
