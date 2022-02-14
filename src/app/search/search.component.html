@@ -8,7 +8,7 @@
     </nb-select>
   </nb-form-field>
   <nb-form-field>
-    <input nbInput type="text" [(ngModel)]="query" placeholder="Enter title..." (keyup.enter)="search()">
+    <input nbInput type="text" [(ngModel)]="query" placeholder="Enter title..."  #searchInput (keyup.enter)="search(); searchInput.blur();">
     <button nbSuffix nbButton ghost (click)="search()">
       <nb-icon icon="search-outline" status="pimary"></nb-icon>
     </button>
