@@ -48,4 +48,4 @@ Thumbs.db
 # Firebase Hosting
 .firebase/
 .firebaserc
-# firebase.json
+firebase.json
