@@ -36,8 +36,7 @@ export class SearchComponent implements OnInit {
 
   constructor(public movies: MoviesService, private music: MusicsService, private books: BooksService, public auth: AuthService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   search = () => {
     this.showQuote = false;
@@ -68,9 +67,6 @@ export class SearchComponent implements OnInit {
 
   saveItem = () => {
     this.auth.user$.subscribe((user: User | null | undefined) => {
-      const startDateValue = new Date(this.saveForm.value.startDate);
-      const startDateString = startDateValue.toDateString().split(' ');
-      const startDate = `${startDateString[2]} ${startDateString[1]} ${startDateString[3]}`;
       const endDateValue = new Date(this.saveForm.value.startDate);
       const endDateString = endDateValue.toDateString().split(' ');
       const endDate = `${endDateString[2]} ${endDateString[1]} ${endDateString[3]}`;
