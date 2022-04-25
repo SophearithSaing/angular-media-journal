@@ -78,7 +78,7 @@ export class SearchComponent implements OnInit {
         rating: this.saveForm.value.rating,
       };
       console.log(savedMovie);
-      this.movies.saveMovie(savedMovie);
+      // this.movies.saveMovie(savedMovie);
       this.saveForm.reset();
     });
     this.openModal = false;

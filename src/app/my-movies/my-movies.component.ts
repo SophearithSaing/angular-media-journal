@@ -38,11 +38,6 @@ export class MyMoviesComponent implements OnInit {
         this.sortMovies();
         this.organizeMovie();
       });
-      this.movies.getSavedTopMovie(this.email).subscribe((res) => {
-        res.docs.forEach(element => {
-          this.topMovies.push(element.data());
-        });
-      });
     });
   }
 
