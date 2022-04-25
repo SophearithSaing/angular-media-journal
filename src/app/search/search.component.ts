@@ -5,6 +5,7 @@ import { Movie } from '../models/movie.model';
 import { Music } from '../models/music.model';
 import { SavedBook } from '../models/savedBook.model';
 import { SavedMovie } from '../models/savedMovie.model';
+import { SavedMusic } from '../models/savedMusic.model';
 import { SavedTV } from '../models/savedTV.model';
 import { TV } from '../models/tv.model';
 import { User } from '../models/user.model';
@@ -113,8 +114,15 @@ export class SearchComponent implements OnInit {
           endDate,
           rating: this.saveForm.value.rating,
         };
-        console.log(savedBook);
-        // this.bookService.saveBook(savedBook);
+        this.bookService.saveBook(savedBook);
+      } else if (this.selectValue === 'music') {
+        const savedMusic: SavedMusic = {
+          email: user?.email as string,
+          music: this.selectedItem as Music,
+          endDate,
+          rating: this.saveForm.value.rating,
+        };
+        this.musicService.saveMusic(savedMusic);
       }
 
       this.saveForm.reset();

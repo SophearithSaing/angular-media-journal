@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Music } from '../models/music.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { SavedMusic } from '../models/savedMusic.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MusicsService {
-
   apiUrl = environment.musicApiUrl;
   apiHost = environment.musicApiHost;
   apiKey = environment.musicApiKey;
@@ -16,14 +16,26 @@ export class MusicsService {
   options = {
     headers: {
       'x-rapidapi-key': this.apiKey,
-      'x-rapidapi-host': this.apiHost
-    }
+      'x-rapidapi-host': this.apiHost,
+    },
   };
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
   searchMusic = (query: string) => {
     const url = `${this.apiUrl}/search?q=${query}`;
     return this.http.get<{ data: Music[] }>(url, this.options);
-  }
+  };
+
+  saveMusic = (data: SavedMusic) => {
+    return new Promise<SavedMusic>((resolve, reject) => {
+      this.firestore
+        .collection('music')
+        .add(data)
+        .then(
+          (res) => {},
+          (err) => reject(err)
+        );
+    });
+  };
 }

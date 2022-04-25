@@ -3,5 +3,6 @@ import { Music } from './music.model';
 export interface SavedMusic {
   email: string;
   music: Music;
-  date: string;
+  endDate: string;
+  rating: number;
 }
