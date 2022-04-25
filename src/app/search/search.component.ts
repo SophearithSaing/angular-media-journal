@@ -62,12 +62,11 @@ export class SearchComponent implements OnInit {
   selectItem = (item: Movie | Music | Book) => {
     this.openModal = true;
     this.selectedItem = item;
-    console.log(this.selectedItem);
   }
 
   saveItem = () => {
     this.auth.user$.subscribe((user: User | null | undefined) => {
-      const endDateValue = new Date(this.saveForm.value.startDate);
+      const endDateValue = new Date(this.saveForm.value.endDate);
       const endDateString = endDateValue.toDateString().split(' ');
       const endDate = `${endDateString[2]} ${endDateString[1]} ${endDateString[3]}`;
       const savedMovie: SavedMovie = {
@@ -77,8 +76,7 @@ export class SearchComponent implements OnInit {
         network: '',
         rating: this.saveForm.value.rating,
       };
-      console.log(savedMovie);
-      // this.movies.saveMovie(savedMovie);
+      this.movies.saveMovie(savedMovie);
       this.saveForm.reset();
     });
     this.openModal = false;
