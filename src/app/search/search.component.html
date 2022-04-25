@@ -8,81 +8,173 @@
     </nb-select>
   </nb-form-field>
   <nb-form-field>
-    <input nbInput type="text" [(ngModel)]="query" placeholder="Enter title..."  #searchInput (keyup.enter)="search(); searchInput.blur();">
+    <input
+      nbInput
+      type="text"
+      [(ngModel)]="query"
+      placeholder="Enter title..."
+      #searchInput
+      (keyup.enter)="search(); searchInput.blur()"
+    />
     <button nbSuffix nbButton ghost (click)="search()">
       <nb-icon icon="search-outline" status="pimary"></nb-icon>
     </button>
   </nb-form-field>
 </div>
 
-<div class="quote" *ngIf="selectValue === 'movies' && movieResults.length === 0 && loading === false">
+<div
+  class="quote"
+  *ngIf="
+    selectValue === 'movies' && movieResults.length === 0 && loading === false
+  "
+>
   <p class="quote__content">
-    “Every film should have its own world, a logic and feel to it that expands beyond the exact image that the audience is seeing.”
+    “Every film should have its own world, a logic and feel to it that expands
+    beyond the exact image that the audience is seeing.”
   </p>
-  <h3 class="quote__author">
-    Christopher Nolan
-  </h3>
+  <h3 class="quote__author">Christopher Nolan</h3>
 </div>
 
-<div class="quote" *ngIf="selectValue === 'tv' && bookResults.length === 0 && loading === false">
+<div
+  class="quote"
+  *ngIf="selectValue === 'tv' && tvResults.length === 0 && loading === false"
+>
   <p class="quote__content">
-    “I've never experienced loss because I've never had a loved one to lose. What is grief, if not love persevering?”
+    “I've never experienced loss because I've never had a loved one to lose.
+    What is grief, if not love persevering?”
   </p>
-  <h3 class="quote__author">
-    Vision (WandaVision)
-  </h3>
+  <h3 class="quote__author">Vision (WandaVision)</h3>
 </div>
 
-<div class="quote" *ngIf="selectValue === 'music' && musicResults.length === 0 && loading === false">
+<div
+  class="quote"
+  *ngIf="
+    selectValue === 'music' && musicResults.length === 0 && loading === false
+  "
+>
   <p class="quote__content">
-    “There's no better way to get your point across than to put it in a beautiful song.”
+    “There's no better way to get your point across than to put it in a
+    beautiful song.”
   </p>
-  <h3 class="quote__author">
-    Ed Sheeran
-  </h3>
+  <h3 class="quote__author">Ed Sheeran</h3>
 </div>
 
-<div class="quote" *ngIf="selectValue === 'books' && bookResults.length === 0 && loading === false">
+<div
+  class="quote"
+  *ngIf="
+    selectValue === 'books' && bookResults.length === 0 && loading === false
+  "
+>
   <p class="quote__content">
     “When something bad happen, you don't know what good it will bring.”
   </p>
-  <h3 class="quote__author">
-    Luka Modric (Official Autobiography)
-  </h3>
+  <h3 class="quote__author">Luka Modric (Official Autobiography)</h3>
 </div>
 
-<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'movies'">
+<div
+  class="results"
+  [nbSpinner]="loading"
+  nbSpinnerSize="giant"
+  nbSpinnerStatus="primary"
+  *ngIf="selectValue === 'movies'"
+>
   <div accent="primary" class="item" *ngFor="let movie of movieResults">
-      <img *ngIf="movie.poster_path !== null" class="item__poster" src="{{ movies.getImage(movie.poster_path) }}" alt="">
-      <div *ngIf="movie.poster_path === null" class="item__poster item__poster--null">
-        <p>No poster available</p>
-      </div>
-      <div class="image-overlay">
-        <button nbButton class="image-overlay__button" (click)="selectItem(movie)">Save</button>
-      </div>
-      <div class="item__info">
-        <p class="item__date">
-          {{ movies.formatDate(movie.release_date) }}
-        </p>
-        <p class="item__title">
-          {{ movie.title }}
-        </p>
+    <img
+      *ngIf="movie.poster_path !== null"
+      class="item__poster"
+      src="{{ movieService.getImage(movie.poster_path) }}"
+      alt=""
+    />
+    <div
+      *ngIf="movie.poster_path === null"
+      class="item__poster item__poster--null"
+    >
+      <p>No poster available</p>
+    </div>
+    <div class="image-overlay">
+      <button
+        nbButton
+        class="image-overlay__button"
+        (click)="selectItem(movie)"
+      >
+        Save
+      </button>
+    </div>
+    <div class="item__info">
+      <p class="item__date">
+        {{ movieService.formatDate(movie.release_date) }}
+      </p>
+      <p class="item__title">
+        {{ movie.title }}
+      </p>
     </div>
   </div>
 </div>
 
-<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'tv'">
-
-</div>
-
-<div class="book-results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'books'">
-  <div accent="primary" class="item" *ngFor="let book of bookResults">
-    <img *ngIf="book.volumeInfo.imageLinks.thumbnail !== null" class="item__poster" src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="">
-    <div *ngIf="book.volumeInfo.imageLinks.thumbnail === null" class="item__poster item__poster--null">
+<div
+  class="results"
+  [nbSpinner]="loading"
+  nbSpinnerSize="giant"
+  nbSpinnerStatus="primary"
+  *ngIf="selectValue === 'tv'"
+>
+  <div accent="primary" class="item" *ngFor="let tv of tvResults">
+    <img
+      *ngIf="tv.poster_path !== null"
+      class="item__poster"
+      src="{{ tvService.getImage(tv.poster_path) }}"
+      alt=""
+    />
+    <div
+      *ngIf="tv.poster_path === null"
+      class="item__poster item__poster--null"
+    >
       <p>No poster available</p>
     </div>
     <div class="image-overlay">
-      <button nbButton class="image-overlay__button" (click)="selectItem(book)">Save</button>
+      <button
+        nbButton
+        class="image-overlay__button"
+        (click)="selectItem(tv)"
+      >
+        Save
+      </button>
+    </div>
+    <div class="item__info">
+      <p class="item__date">
+        {{ tvService.formatDate(tv.first_air_date) }}
+      </p>
+      <p class="item__title">
+        {{ tv.name }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div
+  class="book-results"
+  [nbSpinner]="loading"
+  nbSpinnerSize="giant"
+  nbSpinnerStatus="primary"
+  *ngIf="selectValue === 'books'"
+>
+  <div accent="primary" class="item" *ngFor="let book of bookResults">
+    <img
+      *ngIf="book.volumeInfo.imageLinks.thumbnail !== null"
+      class="item__poster"
+      src="{{ book.volumeInfo.imageLinks.thumbnail }}"
+      alt=""
+    />
+    <div
+      *ngIf="book.volumeInfo.imageLinks.thumbnail === null"
+      class="item__poster item__poster--null"
+    >
+      <p>No poster available</p>
+    </div>
+    <div class="image-overlay">
+      <button nbButton class="image-overlay__button" (click)="selectItem(book)">
+        Save
+      </button>
     </div>
     <div class="item__info">
       <p class="item__title">
@@ -95,14 +187,34 @@
   </div>
 </div>
 
-<div class="results" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="selectValue === 'music'">
+<div
+  class="results"
+  [nbSpinner]="loading"
+  nbSpinnerSize="giant"
+  nbSpinnerStatus="primary"
+  *ngIf="selectValue === 'music'"
+>
   <div accent="primary" class="item" *ngFor="let music of musicResults">
-    <img *ngIf="music.album.cover_big !== null" class="item__poster" src="{{ music.album.cover_big }}" alt="">
-    <div *ngIf="music.album.cover_big === null" class="item__poster item__poster--null">
+    <img
+      *ngIf="music.album.cover_big !== null"
+      class="item__poster"
+      src="{{ music.album.cover_big }}"
+      alt=""
+    />
+    <div
+      *ngIf="music.album.cover_big === null"
+      class="item__poster item__poster--null"
+    >
       <p>No poster available</p>
     </div>
     <div class="image-overlay">
-      <button nbButton class="image-overlay__button" (click)="selectItem(music)">Save</button>
+      <button
+        nbButton
+        class="image-overlay__button"
+        (click)="selectItem(music)"
+      >
+        Save
+      </button>
     </div>
     <div class="item__info">
       <p class="item__title">
@@ -116,13 +228,39 @@
 </div>
 
 <div class="popup" *ngIf="openModal === true">
-  <nb-card class="popup__card" *ngIf="selectValue === 'movies'">
+  <nb-card class="popup__card" *ngIf="selectValue === 'movies' || selectValue === 'tv'">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body class="popup__card--body">
       <form [formGroup]="saveForm" (ngSubmit)="saveItem()">
         <div class="popup__form">
-          <nb-form-field class="popup__input">
-            <input readonly nbInput placeholder="Date" [nbDatepicker]="endDate" formControlName="endDate">
+          <nb-form-field class="popup__input" *ngIf="selectValue === 'tv'">
+            <input
+              readonly
+              nbInput
+              placeholder="Start Date"
+              [nbDatepicker]="startDate"
+              formControlName="startDate"
+            />
+            <nb-datepicker #startDate></nb-datepicker>
+          </nb-form-field>
+          <nb-form-field class="popup__input" *ngIf="selectValue === 'tv'">
+            <input
+              readonly
+              nbInput
+              placeholder="End Date"
+              [nbDatepicker]="endDate"
+              formControlName="endDate"
+            />
+            <nb-datepicker #endDate></nb-datepicker>
+          </nb-form-field>
+          <nb-form-field class="popup__input" *ngIf="selectValue === 'movies'">
+            <input
+              readonly
+              nbInput
+              placeholder="Date"
+              [nbDatepicker]="endDate"
+              formControlName="endDate"
+            />
             <nb-datepicker #endDate></nb-datepicker>
           </nb-form-field>
           <nb-form-field class="popup__input">
@@ -139,8 +277,26 @@
             </nb-select>
           </nb-form-field>
         </div>
-        <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
-        <button nbButton hero status="primary" size="small" class="popup__button" type="submit">Save</button>
+        <button
+          nbButton
+          hero
+          status="danger"
+          size="small"
+          class="popup__button"
+          (click)="closeModal()"
+        >
+          Cancel
+        </button>
+        <button
+          nbButton
+          hero
+          status="primary"
+          size="small"
+          class="popup__button"
+          type="submit"
+        >
+          Save
+        </button>
       </form>
     </nb-card-body>
   </nb-card>
@@ -150,7 +306,11 @@
     <nb-card-body class="popup__card--body">
       <div class="popup__form">
         <nb-form-field class="popup__input">
-          <input nbInput placeholder="Discovered Date" [nbDatepicker]="dateTimePicker">
+          <input
+            nbInput
+            placeholder="Discovered Date"
+            [nbDatepicker]="dateTimePicker"
+          />
           <nb-datepicker #dateTimePicker></nb-datepicker>
         </nb-form-field>
         <nb-form-field class="popup__input">
@@ -167,8 +327,26 @@
           </nb-select>
         </nb-form-field>
       </div>
-      <button nbButton hero status="danger" size="small" class="popup__button" (click)="closeModal()">Cancel</button>
-      <button nbButton hero status="primary" size="small" class="popup__button" (click)="saveItem()">Save</button>
+      <button
+        nbButton
+        hero
+        status="danger"
+        size="small"
+        class="popup__button"
+        (click)="closeModal()"
+      >
+        Cancel
+      </button>
+      <button
+        nbButton
+        hero
+        status="primary"
+        size="small"
+        class="popup__button"
+        (click)="saveItem()"
+      >
+        Save
+      </button>
     </nb-card-body>
   </nb-card>
 </div>
