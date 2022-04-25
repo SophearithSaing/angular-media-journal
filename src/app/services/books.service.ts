@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { Book } from '../models/book.model';
+import { SavedBook } from '../models/savedBook.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +19,8 @@ export class BooksService {
     return this.http.get<{ totalItems: number; items: Array<Book> }>(url);
   }
 
-  saveBook = (data: any) => {
-    return new Promise<any>((resolve, reject) => {
+  saveBook = (data: SavedBook) => {
+    return new Promise<SavedBook>((resolve, reject) => {
       this.firestore
         .collection('books')
         .add(data)

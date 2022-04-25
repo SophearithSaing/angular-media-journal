@@ -132,11 +132,7 @@
       <p>No poster available</p>
     </div>
     <div class="image-overlay">
-      <button
-        nbButton
-        class="image-overlay__button"
-        (click)="selectItem(tv)"
-      >
+      <button nbButton class="image-overlay__button" (click)="selectItem(tv)">
         Save
       </button>
     </div>
@@ -160,13 +156,18 @@
 >
   <div accent="primary" class="item" *ngFor="let book of bookResults">
     <img
-      *ngIf="book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail !== null"
+      *ngIf="
+        book.volumeInfo.imageLinks &&
+        book.volumeInfo.imageLinks.thumbnail !== null
+      "
       class="item__poster"
       src="{{ book.volumeInfo.imageLinks.thumbnail }}"
       alt=""
     />
     <div
-      *ngIf="!book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail"
+      *ngIf="
+        !book.volumeInfo.imageLinks || !book.volumeInfo.imageLinks.thumbnail
+      "
       class="item__poster item__poster--null"
     >
       <p>No poster available</p>
@@ -228,12 +229,16 @@
 </div>
 
 <div class="popup" *ngIf="openModal === true">
+  <div class="popup__background" (click)="closeModal()"></div>
   <nb-card class="popup__card">
     <nb-card-header class="popup__card--header">Save Movie</nb-card-header>
     <nb-card-body class="popup__card--body">
       <form [formGroup]="saveForm" (ngSubmit)="saveItem()">
         <div class="popup__form">
-          <nb-form-field class="popup__input" *ngIf="selectValue === 'tv' || selectValue === 'books'">
+          <nb-form-field
+            class="popup__input"
+            *ngIf="selectValue === 'tv' || selectValue === 'books'"
+          >
             <input
               readonly
               nbInput
@@ -243,7 +248,10 @@
             />
             <nb-datepicker #startDate></nb-datepicker>
           </nb-form-field>
-          <nb-form-field class="popup__input" *ngIf="selectValue === 'tv' || selectValue === 'books'">
+          <nb-form-field
+            class="popup__input"
+            *ngIf="selectValue === 'tv' || selectValue === 'books'"
+          >
             <input
               readonly
               nbInput
@@ -253,7 +261,10 @@
             />
             <nb-datepicker #endDate></nb-datepicker>
           </nb-form-field>
-          <nb-form-field class="popup__input" *ngIf="selectValue === 'movies' || selectValue === 'musics'">
+          <nb-form-field
+            class="popup__input"
+            *ngIf="selectValue === 'movies' || selectValue === 'music'"
+          >
             <input
               readonly
               nbInput
@@ -283,6 +294,7 @@
           status="danger"
           size="small"
           class="popup__button"
+          type="button"
           (click)="closeModal()"
         >
           Cancel

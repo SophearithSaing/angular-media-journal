@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { SavedTV } from '../models/savedTV.model';
 import { TV } from '../models/tv.model';
 
 @Injectable({
@@ -19,8 +20,8 @@ export class TvService {
     return this.http.get<{ results: TV[] }>(url);
   };
 
-  saveTV = (data: any) => {
-    return new Promise<any>((resolve, reject) => {
+  saveTV = (data: SavedTV) => {
+    return new Promise<SavedTV>((resolve, reject) => {
       this.firestore
         .collection('tv')
         .add(data)
