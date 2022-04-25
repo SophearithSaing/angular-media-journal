@@ -4,6 +4,7 @@ import { Book } from '../models/book.model';
 import { Movie } from '../models/movie.model';
 import { Music } from '../models/music.model';
 import { SavedMovie } from '../models/savedMovie.model';
+import { SavedTV } from '../models/savedTV.model';
 import { TV } from '../models/tv.model';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
@@ -79,17 +80,32 @@ export class SearchComponent implements OnInit {
 
   saveItem = () => {
     this.auth.user$.subscribe((user: User | null | undefined) => {
+      const startDateValue = new Date(this.saveForm.value.startDate);
+      const startDateString = startDateValue.toDateString().split(' ');
+      const startDate = `${startDateString[2]} ${startDateString[1]} ${startDateString[3]}`;
       const endDateValue = new Date(this.saveForm.value.endDate);
       const endDateString = endDateValue.toDateString().split(' ');
       const endDate = `${endDateString[2]} ${endDateString[1]} ${endDateString[3]}`;
-      const savedMovie: SavedMovie = {
-        email: user?.email,
-        movie: this.selectedItem,
-        endDate,
-        network: '',
-        rating: this.saveForm.value.rating,
-      };
-      this.movieService.saveMovie(savedMovie);
+
+      if (this.selectValue === 'movies') {
+        const savedMovie: SavedMovie = {
+          email: user?.email,
+          movie: this.selectedItem as Movie,
+          endDate,
+          rating: this.saveForm.value.rating,
+        };
+        this.movieService.saveMovie(savedMovie);
+      } else if (this.selectValue === 'tv') {
+        const savedTv: SavedTV = {
+          email: user?.email,
+          tv: this.selectedItem as TV,
+          startDate,
+          endDate,
+          rating: this.saveForm.value.rating,
+        };
+        this.tvService.saveTV(savedTv);
+      }
+
       this.saveForm.reset();
     });
     this.openModal = false;

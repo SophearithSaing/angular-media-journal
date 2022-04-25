@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../models/movie.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { SavedMovie } from '../models/savedMovie.model';
 
 
 @Injectable({
@@ -49,8 +49,7 @@ export class MoviesService {
     return `${str[0]}, ${str[2]} ${str[1]} ${str[3]}`;
   };
 
-  saveMovie = (data: any) => {
-    console.log(data);
+  saveMovie = (data: SavedMovie) => {
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection('movies')

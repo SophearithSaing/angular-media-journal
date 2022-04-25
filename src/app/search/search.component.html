@@ -76,7 +76,7 @@
   [nbSpinner]="loading"
   nbSpinnerSize="giant"
   nbSpinnerStatus="primary"
-  *ngIf="selectValue === 'movies'"
+  *ngIf="selectValue === 'movies' && (movieResults.length > 0 || loading)"
 >
   <div accent="primary" class="item" *ngFor="let movie of movieResults">
     <img
@@ -116,7 +116,7 @@
   [nbSpinner]="loading"
   nbSpinnerSize="giant"
   nbSpinnerStatus="primary"
-  *ngIf="selectValue === 'tv'"
+  *ngIf="selectValue === 'tv' && (tvResults.length > 0 || loading)"
 >
   <div accent="primary" class="item" *ngFor="let tv of tvResults">
     <img
@@ -156,7 +156,7 @@
   [nbSpinner]="loading"
   nbSpinnerSize="giant"
   nbSpinnerStatus="primary"
-  *ngIf="selectValue === 'books'"
+  *ngIf="selectValue === 'books' && (bookResults.length > 0 || loading)"
 >
   <div accent="primary" class="item" *ngFor="let book of bookResults">
     <img

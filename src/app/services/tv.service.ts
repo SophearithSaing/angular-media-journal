@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { TV } from '../models/tv.model';
 
@@ -11,11 +12,23 @@ export class TvService {
   apiImageUrl = environment.movieApiImageUrl;
   apiKey = environment.movieApiKey;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
   searchTV = (query: string) => {
     const url = `${this.apiUrl}/search/tv?api_key=${this.apiKey}&query=${query}`;
     return this.http.get<{ results: TV[] }>(url);
+  };
+
+  saveTV = (data: any) => {
+    return new Promise<any>((resolve, reject) => {
+      this.firestore
+        .collection('tv')
+        .add(data)
+        .then(
+          (res) => {},
+          (err) => reject(err)
+        );
+    });
   };
 
   getImage = (path: string, width = '/original') => {
