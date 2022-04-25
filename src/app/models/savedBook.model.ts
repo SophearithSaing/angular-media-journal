@@ -1,6 +1,6 @@
 import { Book } from './book.model';
 
-export interface SavedMovie {
+export interface SavedBook {
   book: Book;
   startDate: string;
   endDate: string;

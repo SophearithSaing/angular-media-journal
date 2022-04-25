@@ -1,6 +1,6 @@
 import { Music } from './music.model';
 
-export interface SavedMovie {
+export interface SavedMusic {
   music: Music;
   date: string;
 }
