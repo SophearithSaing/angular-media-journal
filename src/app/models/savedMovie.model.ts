@@ -1,7 +1,7 @@
 import { Movie } from './movie.model';
 
 export interface SavedMovie {
-  email: string | undefined;
+  email: string;
   movie: Movie;
   endDate: string;
   rating: number;

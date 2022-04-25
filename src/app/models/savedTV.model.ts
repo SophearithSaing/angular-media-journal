@@ -1,7 +1,7 @@
 import { TV } from './tv.model';
 
 export interface SavedTV {
-  email: string | undefined;
+  email: string;
   tv: TV;
   startDate: string;
   endDate: string;

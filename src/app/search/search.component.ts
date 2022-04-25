@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Book } from '../models/book.model';
 import { Movie } from '../models/movie.model';
 import { Music } from '../models/music.model';
+import { SavedBook } from '../models/savedBook.model';
 import { SavedMovie } from '../models/savedMovie.model';
 import { SavedTV } from '../models/savedTV.model';
 import { TV } from '../models/tv.model';
@@ -89,7 +90,7 @@ export class SearchComponent implements OnInit {
 
       if (this.selectValue === 'movies') {
         const savedMovie: SavedMovie = {
-          email: user?.email,
+          email: user?.email as string,
           movie: this.selectedItem as Movie,
           endDate,
           rating: this.saveForm.value.rating,
@@ -97,13 +98,23 @@ export class SearchComponent implements OnInit {
         this.movieService.saveMovie(savedMovie);
       } else if (this.selectValue === 'tv') {
         const savedTv: SavedTV = {
-          email: user?.email,
+          email: user?.email as string,
           tv: this.selectedItem as TV,
           startDate,
           endDate,
           rating: this.saveForm.value.rating,
         };
         this.tvService.saveTV(savedTv);
+      } else if (this.selectValue === 'books') {
+        const savedBook: SavedBook = {
+          email: user?.email as string,
+          book: this.selectedItem as Book,
+          startDate,
+          endDate,
+          rating: this.saveForm.value.rating,
+        };
+        console.log(savedBook);
+        // this.bookService.saveBook(savedBook);
       }
 
       this.saveForm.reset();
