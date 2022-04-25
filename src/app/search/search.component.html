@@ -24,9 +24,18 @@
   </h3>
 </div>
 
+<div class="quote" *ngIf="selectValue === 'tv' && bookResults.length === 0 && loading === false">
+  <p class="quote__content">
+    “I've never experienced loss because I've never had a loved one to lose. What is grief, if not love persevering?”
+  </p>
+  <h3 class="quote__author">
+    Vision (WandaVision)
+  </h3>
+</div>
+
 <div class="quote" *ngIf="selectValue === 'music' && musicResults.length === 0 && loading === false">
   <p class="quote__content">
-    “There’s no better way to get your point across than to put it in a beautiful song.”
+    “There's no better way to get your point across than to put it in a beautiful song.”
   </p>
   <h3 class="quote__author">
     Ed Sheeran
@@ -35,10 +44,10 @@
 
 <div class="quote" *ngIf="selectValue === 'books' && bookResults.length === 0 && loading === false">
   <p class="quote__content">
-    “I haven't found a good quote for this part yet.”
+    “When something bad happen, you don't know what good it will bring.”
   </p>
   <h3 class="quote__author">
-    Developer
+    Luka Modric (Official Autobiography)
   </h3>
 </div>
 
