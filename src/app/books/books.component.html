@@ -1,1 +1,42 @@
-<p>books works!</p>
+<div class="year" *ngFor="let year of yearlyList">
+  <h1>
+    {{ year.year }}
+  </h1>
+  <div class="books" *ngFor="let month of year.months">
+    <h2 class="books__month" *ngIf="month.books.length > 0">
+      {{ month.month }}
+    </h2>
+    <div accent="primary" class="book" *ngFor="let book of month.books">
+      <div class="book__image">
+        <img
+          *ngIf="
+            book.book.volumeInfo.imageLinks &&
+            book.book.volumeInfo.imageLinks.thumbnail !== null
+          "
+          class="book__poster"
+          src="{{ book.book.volumeInfo.imageLinks.thumbnail }}"
+          alt=""
+        />
+        <img
+          *ngIf="
+            !book.book.volumeInfo.imageLinks || !book.book.volumeInfo.imageLinks.thumbnail
+          "
+          class="book__poster-null"
+        />
+        <div class="image-overlay">
+          <p class="rating">
+            {{ book.rating }} <nb-icon icon="star"></nb-icon>
+          </p>
+        </div>
+      </div>
+      <div class="book__info">
+        <p class="book__date">
+          {{ books.formatDate(book.endDate) }}
+        </p>
+        <p class="book__title">
+          {{ book.book.volumeInfo.title }} ({{ getYear(book.book.volumeInfo.publishedDate) }})
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

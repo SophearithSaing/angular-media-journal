@@ -35,4 +35,16 @@ export class BooksService {
     const url = `${this.apiUrl}/${id}&key=${this.apiKey}`;
     return this.http.get<Book>(url);
   }
+
+  getSavedBooks = (email: string | null | undefined) => {
+    return this.firestore
+      .collection('books', (ref) => ref.where('email', '==', email))
+      .get();
+  };
+
+  formatDate = (date: string) => {
+    const oldDate = new Date(date);
+    const str = oldDate.toDateString().split(' ');
+    return `${str[0]}, ${str[2]} ${str[1]} ${str[3]}`;
+  };
 }
