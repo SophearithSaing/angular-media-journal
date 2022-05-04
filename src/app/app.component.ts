@@ -21,11 +21,11 @@ export class AppComponent {
       icon: 'film-outline',
       link: '/movies',
     },
-    {
-      title: 'TV Shows',
-      icon: 'tv-outline',
-      link: '/tv',
-    },
+    // {
+    //   title: 'TV Shows',
+    //   icon: 'tv-outline',
+    //   link: '/tv',
+    // },
     {
       title: 'Music',
       icon: 'music-outline',
@@ -36,11 +36,11 @@ export class AppComponent {
       icon: 'book-outline',
       link: '/books',
     },
-    {
-      title: 'Profile',
-      icon: 'person-outline',
-      link: '/profile',
-    },
+    // {
+    //   title: 'Profile',
+    //   icon: 'person-outline',
+    //   link: '/profile',
+    // },
   ];
 
   constructor(
