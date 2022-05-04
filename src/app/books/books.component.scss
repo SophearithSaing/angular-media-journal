@@ -1,7 +1,7 @@
 .year {
   padding: 0 2rem 1rem;
   @media (max-width: 480px) {
-    padding: 0 .5rem 1rem;
+    padding: 0 0.5rem 1rem;
   }
   h1 {
     margin: 16px 0;
@@ -10,16 +10,17 @@
 }
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, 130px);
   gap: 2rem;
   &__month {
     margin: 0;
     grid-column: 1/-1;
   }
   @media (max-width: 480px) {
-    padding: 0 .5rem 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-    gap: 1rem;
+    gap: 1rem 2rem;
+  }
+  @media (max-width: 350px) {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -37,20 +38,19 @@
     .image-overlay {
       opacity: 1;
     }
-    .book__date {
-      color: #FFF;
-    }
-    .book__title {
-      color: #FFF;
+    .book__date,
+    .book__title,
+    .book__author {
+      color: #fff;
     }
   }
   &__date {
     padding: 10px 5px 5px;
     margin: 0;
+    font-size: 12px;
     text-align: center;
     @media (max-width: 480px) {
       padding: 10px 5px 0;
-      font-size: 12px;
     }
   }
   &__image {
@@ -66,16 +66,27 @@
   &__title {
     padding: 10px;
     margin: 0;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     text-align: center;
     @media (max-width: 480px) {
-      font-size: 14px;
+      padding: 5px;
+    }
+  }
+  &__author {
+    font-size: 12px;
+    padding: 0 10px;
+    margin: 0;
+    text-align: center;
+    &:last-child {
+      margin-bottom: 10px;
+    }
+    @media (max-width: 480px) {
       padding: 5px;
     }
   }
   .image-overlay {
-    transition: .5s ease;
+    transition: 0.5s ease;
     opacity: 0;
     position: absolute;
     border-radius: 10px 10px 0 0;
@@ -88,7 +99,7 @@
     bottom: 0;
     left: 0;
     .rating {
-      color: #FFF;
+      color: #fff;
       font-size: 1.5rem;
       nb-icon {
         font-size: 2rem;

@@ -36,6 +36,9 @@
         <p class="book__title">
           {{ book.book.volumeInfo.title }} ({{ getYear(book.book.volumeInfo.publishedDate) }})
         </p>
+        <p class="book__author" *ngFor="let author of book.book.volumeInfo.authors">
+        {{ author }}
+        </p>
       </div>
     </div>
   </div>
