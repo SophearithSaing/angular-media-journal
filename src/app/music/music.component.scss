@@ -1,0 +1,106 @@
+.year {
+  padding: 0 2rem 1rem;
+  @media (max-width: 480px) {
+    padding: 0 0.5rem 1rem;
+  }
+  h1 {
+    margin: 16px 0;
+    text-align: center;
+  }
+}
+.musics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  &__month {
+    margin: 0;
+    grid-column: 1/-1;
+  }
+  @media (max-width: 480px) {
+    padding: 0 0.5rem 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.music {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  &:hover {
+    background-color: #3366ff;
+    transition: 0.5s ease;
+    border-radius: 10px;
+    .music__poster {
+      border-radius: 10px 10px 0 0;
+    }
+    .image-overlay {
+      opacity: 1;
+    }
+    .music__date,
+    .music__title,
+    .music__singer {
+      color: #fff;
+    }
+  }
+  &__date {
+    padding: 10px 5px 5px;
+    margin: 0;
+    text-align: center;
+    @media (max-width: 480px) {
+      padding: 10px 5px 0;
+      font-size: 12px;
+    }
+  }
+  &__image {
+    position: relative;
+  }
+  &__poster {
+    width: 100%;
+    height: 100%;
+    flex-basis: 75%;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba($color: #000000, $alpha: 0.3);
+  }
+  &__title {
+    padding: 10px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    @media (max-width: 480px) {
+      font-size: 14px;
+      padding: 5px;
+    }
+  }
+  &__singer {
+    padding: 0 10px 10px;
+    margin: 0;
+    text-align: center;
+    @media (max-width: 480px) {
+      padding: 0;
+      font-size: 12px;
+    }
+  }
+  .image-overlay {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    border-radius: 10px 10px 0 0;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .rating {
+      color: #fff;
+      font-size: 1.5rem;
+      nb-icon {
+        font-size: 2rem;
+      }
+    }
+  }
+}

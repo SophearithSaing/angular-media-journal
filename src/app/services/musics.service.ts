@@ -38,4 +38,16 @@ export class MusicsService {
         );
     });
   };
+
+  getSavedBooks = (email: string | null | undefined) => {
+    return this.firestore
+      .collection('music', (ref) => ref.where('email', '==', email))
+      .get();
+  };
+
+  formatDate = (date: string) => {
+    const oldDate = new Date(date);
+    const str = oldDate.toDateString().split(' ');
+    return `${str[0]}, ${str[2]} ${str[1]} ${str[3]}`;
+  };
 }

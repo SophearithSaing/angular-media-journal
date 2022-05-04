@@ -1,1 +1,40 @@
-<p>music works!</p>
+<div class="year" *ngFor="let year of yearlyList">
+  <h1>
+    {{ year.year }}
+  </h1>
+  <div class="musics" *ngFor="let month of year.months">
+    <h2 class="musics__month" *ngIf="month.musics.length > 0">
+      {{ month.month }}
+    </h2>
+    <div accent="primary" class="music" *ngFor="let music of month.musics">
+      <div class="music__image">
+        <img
+          *ngIf="music.music.album.cover_big !== null"
+          class="music__poster"
+          src="{{ music.music.album.cover_big }}"
+          alt=""
+        />
+        <img
+          *ngIf="!music.music.album.cover_big"
+          class="music__poster-null"
+        />
+        <div class="image-overlay">
+          <p class="rating">
+            {{ music.rating }} <nb-icon icon="star"></nb-icon>
+          </p>
+        </div>
+      </div>
+      <div class="music__info">
+        <p class="music__date">
+          {{ musicService.formatDate(music.endDate) }}
+        </p>
+        <p class="music__title">
+          {{ music.music.title }}
+        </p>
+        <p class="music__singer">
+          {{ music.music.artist.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
