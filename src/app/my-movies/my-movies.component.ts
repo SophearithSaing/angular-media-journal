@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import myMovies from '../../assets/myMovies.json';
-import { Movie } from '../models/movie.model';
-import { FirebaseRes, SavedMovie } from '../models/savedMovie.model';
 import { AuthService } from '../services/auth.service';
 import { MoviesService } from '../services/movies.service';
 
@@ -22,6 +19,7 @@ export class MyMoviesComponent implements OnInit {
       movies: Array<any>,
     }>,
   }> = [];
+  selectedYear: number | null = null;
 
   email: string | null | undefined = '';
 
@@ -74,6 +72,7 @@ export class MyMoviesComponent implements OnInit {
           }
         });
       });
+      this.selectedYear = this.yearlyList[0].year;
     });
   }
 
@@ -82,8 +81,5 @@ export class MyMoviesComponent implements OnInit {
     return newDate.getFullYear();
   }
 
-  enumerate = (num: number) => {
-    num = Math.round(num);
-    return Array(num).fill(num);
-  }
+  selectYear = (year: number) => this.selectedYear = year;
 }

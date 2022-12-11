@@ -1,3 +1,9 @@
+.years-toggle {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+}
+
 .year {
   padding: 0 2rem 1rem;
   @media (max-width: 480px) {
