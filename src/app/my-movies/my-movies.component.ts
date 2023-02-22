@@ -80,6 +80,4 @@ export class MyMoviesComponent implements OnInit {
     const newDate = new Date(date);
     return newDate.getFullYear();
   }
-
-  selectYear = (year: number) => this.selectedYear = year;
 }

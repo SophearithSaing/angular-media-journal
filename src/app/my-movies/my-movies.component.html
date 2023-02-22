@@ -1,14 +1,10 @@
 <div class="years-toggle">
-  <button
-    nbButton
-    hero
-    size="giant"
-    *ngFor="let year of yearlyList"
-    status="{{ selectedYear === year.year ? 'primary' : 'basic' }}"
-    (click)="selectYear(year.year)"
-  >
-    {{ year.year }}
-  </button>
+  <nb-form-field>
+    <nb-select placeholder="Category" [(selected)]="selectedYear">
+      <nb-option value="movies" *ngFor="let year of yearlyList">{{ year.year }}</nb-option>
+    </nb-select>
+  </nb-form-field>
+  <nb-form-field>
 </div>
 
 <div class="year" *ngFor="let year of yearlyList">
