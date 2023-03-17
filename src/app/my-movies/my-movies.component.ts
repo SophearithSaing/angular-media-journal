@@ -19,7 +19,7 @@ export class MyMoviesComponent implements OnInit {
       movies: Array<any>,
     }>,
   }> = [];
-  selectedYear: number | null = null;
+  selectedYear: number | null = 2021;
 
   email: string | null | undefined = '';
 

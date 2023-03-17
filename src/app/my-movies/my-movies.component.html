@@ -1,10 +1,9 @@
 <div class="years-toggle">
   <nb-form-field>
-    <nb-select placeholder="Category" [(selected)]="selectedYear">
-      <nb-option value="movies" *ngFor="let year of yearlyList">{{ year.year }}</nb-option>
+    <nb-select [(selected)]="selectedYear">
+      <nb-option [value]="year.year" *ngFor="let year of yearlyList">{{ year.year }}</nb-option>
     </nb-select>
   </nb-form-field>
-  <nb-form-field>
 </div>
 
 <div class="year" *ngFor="let year of yearlyList">
